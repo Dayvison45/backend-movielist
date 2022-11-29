@@ -11,5 +11,6 @@ express()
   .get('/', async(req, res) =>{
     const data = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=39113d47500d6a832e88e500d36006ec&language=en-US`)
 let newdata = data.data.results
+console.log("essa bosta de data era pra funcionar")
     res.json(newdata)})
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
