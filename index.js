@@ -9,6 +9,12 @@ express()
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
   .get('/', async(req, res) =>{
-    const data = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=39113d47500d6a832e88e500d36006ec&language=en-US`)
-    res.json(data.data.results)})
+    const respo = [] 
+    await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=39113d47500d6a832e88e500d36006ec&language=en-US`).then(response=>respo.push(response.data.results[0])).catch(err=>console.log("nome errado")) 
+    setTimeout(resposta,4000)
+    function resposta(){
+      res.status(200).json(respo)
+    }    
+  
+  })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
