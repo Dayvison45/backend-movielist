@@ -18,8 +18,7 @@
     "ejs": "^3.1.5",
     "express": "^4.15.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.7.4",
-    "node-fetch": "^3.3.0"
+    "mongoose": "^6.7.4"
   },
   "devDependencies": {
     "got": "^11.3.0",
@@ -29,7 +28,6 @@
     "type": "git",
     "url": "https://github.com/heroku/node-js-getting-started"
   },
-  "exports": "./src/index.js",
   "keywords": [
     "node",
     "heroku",
