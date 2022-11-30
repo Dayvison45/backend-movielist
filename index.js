@@ -76,9 +76,11 @@ res.status(401).json(err)}
   }
   ).post('/addlist',  checktoken, async(req,res)=>{
  const {list,id} = req.body
+ console.log(list)
  const newuser = await userModel.findOne({_id:id})
  let mapear=false
  newuser.list.map((e)=>e.id===list.id?mapear=true:"")
+ 
  mapear===false?addMovie(list):removeMovie(list)
  async function removeMovie(x){
     const newlist= await newuser.list.filter(e=> e.id!==x.id)
@@ -94,9 +96,7 @@ res.status(401).json(err)}
 }
 ).post("/search",async(req,res)=>{
   const {data,genre,type} = req.body
-  console.log(data)
   const respo = []
-console.log(genre)
 if(genre){
   await axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=en-US&with_genres=${genre}`).then(response=>response.data.results[0]?respo.push(response.data.results):'').catch(err=>console.log(err)) 
   res.status(200).json(respo)
