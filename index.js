@@ -1,15 +1,15 @@
-const axios = require('axios')
-const  express  = require('express')
-const cors = require("cors")
-const jwt = require("jsonwebtoken")
-const mongoose = require("mongoose")
-const bcrypt = require("bcrypt")
-require('dotenv').config()
-const app = express()
+import axios from 'axios'
+import  express  from  'express'
+import cors from "cors"
+import jwt from "jsonwebtoken"
+import mongoose from "mongoose"
+import bcrypt from "bcrypt"
+import * as dotenv from 'dotenv' 
+dotenv.config()
 const secret = process.env.DB_SECRET
 
 
-const userModel = require("../models/userModel")
+import userModel from "./models/userModel.js"
 const linkDB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.3v8vfkh.mongodb.net/MovieList?retryWrites=true&w=majority`
 mongoose.connect(linkDB).then(console.log("database connect")).catch(err=>console.log(err))
 
@@ -25,11 +25,11 @@ catch(err){console.log(err)}}
 
 
 
-app.use(cors())
-app.use(express.json())
+
 const PORT = process.env.PORT || 3000
 
 express()
+.use(cors())
   .use(express.json())
   .set('view engine', 'ejs')
   .post("/login", async(req,res)=>{
