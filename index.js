@@ -81,9 +81,9 @@ res.status(401).json(err)}
  newuser.list.map((e)=>e.id===list.id?mapear=true:"")
  mapear===false?addMovie(list):removeMovie(list)
  async function removeMovie(x){
-    const newlist= newuser.list.filter(e=> e!==x)
+    const newlist= await newuser.list.filter(e=> e.id!==x.id)
     newuser.list = newlist
-    newuser.save().then(res.status(200).json({msg:"item removido da sua lista"}))
+  await  newuser.save().then(res.status(200).json({msg:"item removido da sua lista"}))
   console.log('item removido')}
 
  async function addMovie(x){
