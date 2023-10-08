@@ -10,6 +10,7 @@ const secret = process.env.DB_SECRET
 
 
 import userModel from "./models/userModel.js"
+mongoose.set("strictQuery", false);
 const linkDB = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.3v8vfkh.mongodb.net/MovieList?retryWrites=true&w=majority`
 mongoose.connect(linkDB).then(console.log("database connect")).catch(err=>console.log(err))
 
